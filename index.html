@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthee - Health Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Login -->
+  <div class="page" id="loginPage">
+    <h1>Login to Healthee</h1>
+    <input type="text" id="loginUsername" placeholder="Username" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="loginUser()">Login</button>
+    <p>No account? <a href="#" onclick="switchPage('registerPage')">Register</a></p>
+  </div>
+
+  <!-- Register -->
+  <div class="page hidden" id="registerPage">
+    <h1>Register</h1>
+    <input type="text" id="regUsername" placeholder="New Username" />
+    <input type="password" id="regPassword" placeholder="New Password" />
+    <button onclick="registerUser()">Register</button>
+    <p>Back to <a href="#" onclick="switchPage('loginPage')">Login</a></p>
+  </div>
+
+  <!-- Main Form -->
+  <div class="page hidden" id="mainPage">
+    <h2>Welcome, <span id="displayUser"></span></h2>
+    <form id="healthForm">
+      <input type="number" id="sleep" placeholder="Sleep Hours" required />
+      <input type="number" id="water" placeholder="Water Intake (cups)" required />
+      <input type="number" id="meals" placeholder="Meals per Day" required />
+      <input type="text" id="bp" placeholder="Blood Pressure (optional)" />
+      <select id="activity">
+        <option value="Yes">Physical Activity: Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select id="mood">
+        <option value="Happy">Mood: Happy</option>
+        <option value="Sad">Sad</option>
+        <option value="Stressed">Stressed</option>
+        <option value="Okay">Okay</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <button onclick="switchPage('settingsPage')">⚙️ Settings</button>
+    <button onclick="logout()">🔓 Logout</button>
+  </div>
+
+  <!-- Loading -->
+  <div class="page hidden" id="loadingPage">
+    <h2>⏳ Generating Report...</h2>
+    <p>Please wait while we analyze your health input.</p>
+  </div>
+
+  <!-- Results -->
+  <div class="page hidden" id="resultsPage">
+    <h2>Your Health Report</h2>
+    <div id="resultsBox"></div>
+    <button onclick="switchPage('mainPage')">🔙 Back</button>
+    <button onclick="logout()">🔓 Logout</button>
+  </div>
+
+  <!-- Settings -->
+  <div class="page hidden" id="settingsPage">
+    <h2>Settings</h2>
+    <textarea readonly>
+Healthee is your simple health tracker for daily check-ins and improvement suggestions.
+    </textarea>
+    <input type="text" id="newUsername" placeholder="Change Username" />
+    <input type="password" id="newPassword" placeholder="Change Password" />
+    <button onclick="updateSettings()">Update</button>
+    <button onclick="switchPage('mainPage')">⬅️ Back</button>
+    <button onclick="logout()">🔓 Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
