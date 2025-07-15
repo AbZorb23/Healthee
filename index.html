@@ -4,22 +4,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Healthee - Health Tracker</title>
   <style>
-    .hidden { display: none; }
-    .page { padding: 20px; }
-    video { width: 100%; max-width: 600px; }
-    button { margin: 5px; padding: 8px 12px; }
-    input, select, textarea { display: block; margin: 10px 0; padding: 8px; width: 100%; max-width: 300px; }
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .hidden {
+      display: none;
+    }
+    .page {
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    video {
+      width: 100%;
+      max-width: 600px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+    }
+    input, select, textarea {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    /* Login Video Background */
+    #loginPage {
+      position: relative;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+    #loginVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    #loginContent {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 100px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Login Page -->
   <div class="page" id="loginPage">
-    <h1>Login to Healthee</h1>
-    <input type="text" id="loginUsername" placeholder="Username" />
-    <input type="password" id="loginPassword" placeholder="Password" />
-    <button onclick="loginUser()">Login</button>
-    <p>Don't have an account? <a href="#" onclick="switchPage('registerPage')">Register</a></p>
+    <video autoplay muted loop playsinline id="loginVideo">
+      <source src="login-bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div id="loginContent">
+      <h1>Login to Healthee</h1>
+      <input type="text" id="loginUsername" placeholder="Username" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button onclick="loginUser()">Login</button>
+      <p>Don't have an account? <a href="#" onclick="switchPage('registerPage')">Register</a></p>
+    </div>
   </div>
 
   <!-- Register Page -->
